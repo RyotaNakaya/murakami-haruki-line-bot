@@ -24,9 +24,15 @@ class WebhookController < ApplicationController
       when Line::Bot::Event::Message
         case event.type
         when Line::Bot::Event::MessageType::Text
+          if event.message['text'].length > 14
+            response_message = "やれやれ、15文字以上の言葉を解釈するのは本当に難しいことなんだ"
+          elsif
+            response_message = haruki_message(event.message['text'])
+          end
+          
           message = {
             type: 'text',
-            text: haruki_message(event.message['text'])
+            text: response_message
           }
           client.reply_message(event['replyToken'], message)
         when Line::Bot::Event::MessageType::Image, Line::Bot::Event::MessageType::Video
@@ -57,7 +63,7 @@ def haruki_message(t)
     "「世界中の#{t}がみんな溶けて、バターになってしまうくらい好きだ」と僕は答えた。",
     "#{t}には優れた点が二つある。まずセックス・シーンの無いこと、それから一人も人が死なないことだ。",
     "他人とうまくやっていくというのはむずかしい。#{t}か何かになって一生寝転んで暮らせたらどんなに素敵だろうと時々考える。",
-    "#{t}は生の対極にあるのではなく、我々の生のうちに潜んでいるのだ",
+    "#{t}は生の対極にあるのではなく、我々の生のうちに潜んでいるのだ。",
   ]
 
   haruki_goroku.sample()
