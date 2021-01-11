@@ -8,5 +8,5 @@ Rails 6.0.2.1
 ```
 
 # 使用イメージ
-![Image from iOS](https://user-images.githubusercontent.com/45222883/81832169-26a2b400-9579-11ea-9bfd-d84bcbc730c9.png)
 
+<img src="https://user-images.githubusercontent.com/45222883/81832169-26a2b400-9579-11ea-9bfd-d84bcbc730c9.png" width="400px">
